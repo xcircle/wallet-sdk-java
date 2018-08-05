@@ -125,7 +125,7 @@ Also you need to confirm the `sign-util` has the executable permission, when you
 
         JSONObject jsonheader = JSON.parseObject(strheader);
         
-        String response = wallet.CreatePOE(jsonheader, jsondata, did, created, nonce, privatekeyBase64);
+        String response = wallet.CreatePOE(jsonheader, jsondata, did, created, nonce, privatekeyBase64,signToolPath);
 
 ```
 
@@ -141,10 +141,21 @@ Also you need to confirm the `sign-util` has the executable permission, when you
 
         JSONObject jsonheader = JSON.parseObject(strheader);
 
-        String response = wallet.IssueTokens(jsonheader, jsondata, "did:axn:039aff10-b96b-4c76-86d0-73b5a74d2ca2", created, nonce, privatekeyBase64);
+        String response = wallet.IssueTokens(jsonheader, jsondata, "did:axn:039aff10-b96b-4c76-86d0-73b5a74d2ca2", created, nonce, privatekeyBase64,signToolPath);
 
 ```
-
+### query balance
+```java
+        JSONObject jsonheader = JSON.parseObject(header);
+		String response;
+		try {
+			response = wallet.QueryWalletBalance(jsonheader, "did:axn:039aff10-b96b-4c76-86d0-73b5a74d2ca2");
+			System.out.print(response);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+```
 
 
 ### Use callback URL to receive blockchain transaction events
